@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Detector - AI Powered</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🔍</div>
+            <span class="logo-text">PlagiarismAI</span>
+        </div>
+        <div class="tagline">Intelligent Document Comparison</div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Upload Section -->
+        <div class="upload-wrapper">
+            <div class="section-header">
+                <h2>📑 Upload Documents</h2>
+                <p>Compare two documents to detect similarity</p>
+            </div>
+
+            <div class="upload-grid">
+                <!-- Document 1 -->
+                <div class="upload-card">
+                    <div class="card-header">
+                        <span class="card-number">01</span>
+                        <span class="card-title">First Document</span>
+                    </div>
+                    <div class="dropzone" id="dropzone1">
+                        <input type="file" id="file1" accept=".txt,.pdf,.doc,.docx">
+                        <label for="file1" class="dropzone-label">
+                            <div class="dropzone-icon">📄</div>
+                            <div class="dropzone-text">
+                                <strong>Drop file here</strong> or click to browse
+                            </div>
+                            <div class="dropzone-formats">TXT, PDF, DOC, DOCX</div>
+                        </label>
+                        <div class="file-preview" id="preview1"></div>
+                    </div>
+                </div>
+
+                <!-- Document 2 -->
+                <div class="upload-card">
+                    <div class="card-header">
+                        <span class="card-number">02</span>
+                        <span class="card-title">Second Document</span>
+                    </div>
+                    <div class="dropzone" id="dropzone2">
+                        <input type="file" id="file2" accept=".txt,.pdf,.doc,.docx">
+                        <label for="file2" class="dropzone-label">
+                            <div class="dropzone-icon">📄</div>
+                            <div class="dropzone-text">
+                                <strong>Drop file here</strong> or click to browse
+                            </div>
+                            <div class="dropzone-formats">TXT, PDF, DOC, DOCX</div>
+                        </label>
+                        <div class="file-preview" id="preview2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="analyze-btn" id="analyzeBtn" disabled>
+                <span class="btn-text">Analyze Documents</span>
+                <span class="btn-icon">→</span>
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-wrapper" id="resultsWrapper">
+            <div class="section-header">
+                <h2>📊 Analysis Results</h2>
+                <p>Similarity score and detailed breakdown</p>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loader">
+                    <div class="loader-ring"></div>
+                    <div class="loader-ring"></div>
+                    <div class="loader-ring"></div>
+                </div>
+                <p>Analyzing documents...</p>
+            </div>
+
+            <!-- Results Display -->
+            <div class="results-display" id="resultsDisplay">
+                <!-- Score Card -->
+                <div class="score-card">
+                    <div class="score-circle" id="scoreCircle">
+                        <svg viewBox="0 0 200 200">
+                            <circle class="score-bg" cx="100" cy="100" r="90"></circle>
+                            <circle class="score-progress" cx="100" cy="100" r="90" id="scoreProgress"></circle>
+                        </svg>
+                        <div class="score-content">
+                            <div class="score-value" id="scoreValue">0%</div>
+                            <div class="score-label">Similarity</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Details -->
+                <div class="analysis-details">
+                    <div class="detail-card" id="statusCard">
+                        <div class="detail-icon">⚠️</div>
+                        <div class="detail-content">
+                            <h3 id="statusTitle">Analyzing...</h3>
+                            <p id="statusDescription">Please wait while we process your documents.</p>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">Match Level</div>
+                            <div class="metric-value" id="matchLevel">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Risk Assessment</div>
+                            <div class="metric-value" id="riskLevel">-</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">Confidence</div>
+                            <div class="metric-value" id="confidence">-</div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="secondary-btn" id="resetBtn">
+                            <span>🔄</span>
+                            New Analysis
+                        </button>
+                        <button class="secondary-btn" id="detailsBtn">
+                            <span>📋</span>
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
